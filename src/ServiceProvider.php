@@ -5,12 +5,10 @@ namespace TomSchlick\ServerPush;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 /**
- * Class ServiceProvider
- * @package TomSchlick\ServerPush
+ * Class ServiceProvider.
  */
 class ServiceProvider extends BaseServiceProvider
 {
-
     /**
      * Register the service provider.
      *

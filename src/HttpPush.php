@@ -1,12 +1,9 @@
 <?php
 
-
 namespace TomSchlick\ServerPush;
 
-
 /**
- * Class HttpPush
- * @package TomSchlick\ServerPush
+ * Class HttpPush.
  */
 class HttpPush
 {
@@ -39,7 +36,7 @@ class HttpPush
         $links = [];
 
         foreach ($this->resources as $row) {
-            $links[] = '<' . $row['path'] . '>; rel=preload; as=' . $row['type'];
+            $links[] = '<'.$row['path'].'>; rel=preload; as='.$row['type'];
         }
 
         return $links;
