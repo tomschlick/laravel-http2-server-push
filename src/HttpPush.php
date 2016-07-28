@@ -46,6 +46,14 @@ class HttpPush
     }
 
     /**
+     * @return bool
+     */
+    public function hasLinks() : bool
+    {
+        return !empty($this->resources);
+    }
+
+    /**
      * Clear all resources out of the queue.
      */
     public function clear()

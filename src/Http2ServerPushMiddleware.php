@@ -3,7 +3,7 @@
 namespace TomSchlick\ServerPush;
 
 use Closure;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 /**
  * Class Http2ServerPushMiddleware
@@ -31,7 +31,8 @@ class Http2ServerPushMiddleware
 
     protected function addServerPushHeaders()
     {
-        foreach (app('server-push')->generateLinks() as $link) {
+        if(app('server-push')->hasLinks()) {
+            $link = implode(',', app('server-push')->generateLinks());
             $this->response->headers->set('Link', $link, true);
         }
     }
