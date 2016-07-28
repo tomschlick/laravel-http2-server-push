@@ -6,8 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 
 /**
- * Class Http2ServerPushMiddleware
- * @package TomSchlick\ServerPush
+ * Class Http2ServerPushMiddleware.
  */
 class Http2ServerPushMiddleware
 {
@@ -16,6 +15,7 @@ class Http2ServerPushMiddleware
     /**
      * @param Request $request
      * @param Closure $next
+     *
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
@@ -31,7 +31,7 @@ class Http2ServerPushMiddleware
 
     protected function addServerPushHeaders()
     {
-        if(app('server-push')->hasLinks()) {
+        if (app('server-push')->hasLinks()) {
             $link = implode(',', app('server-push')->generateLinks());
             $this->response->headers->set('Link', $link, true);
         }

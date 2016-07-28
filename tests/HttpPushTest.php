@@ -6,8 +6,7 @@ use PHPUnit_Framework_TestCase;
 use TomSchlick\ServerPush\HttpPush;
 
 /**
- * Class HttpPushTest
- * @package TomSchlick\ServerPush\Tests
+ * Class HttpPushTest.
  */
 class HttpPushTest extends PHPUnit_Framework_TestCase
 {
@@ -35,7 +34,7 @@ class HttpPushTest extends PHPUnit_Framework_TestCase
             [
                 'path' => 'style.css',
                 'type' => 'style',
-            ]
+            ],
         ];
         $this->assertEquals($expected, $this->instance->resources);
     }
@@ -44,7 +43,7 @@ class HttpPushTest extends PHPUnit_Framework_TestCase
     {
         $this->instance->queueResource('/assets/app.js.min', 'script');
 
-        $this->assertEquals("</assets/app.js.min>; rel=preload; as=script", $this->instance->generateLinks()[0]);
+        $this->assertEquals('</assets/app.js.min>; rel=preload; as=script', $this->instance->generateLinks()[0]);
     }
 
     public function test_clear_resources()
@@ -55,5 +54,4 @@ class HttpPushTest extends PHPUnit_Framework_TestCase
         $this->instance->clear();
         $this->assertTrue(empty($this->instance->resources));
     }
-
 }
