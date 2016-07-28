@@ -13,7 +13,7 @@ class HttpPush
     /**
      * @var array
      */
-    protected $resources = [];
+    public $resources = [];
 
     /**
      * Push a resource onto the queue for the middleware.
@@ -43,5 +43,13 @@ class HttpPush
         }
 
         return $links;
+    }
+
+    /**
+     * Clear all resources out of the queue.
+     */
+    public function clear()
+    {
+        $this->resources = [];
     }
 }
