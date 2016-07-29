@@ -15,7 +15,7 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../config/server-push.php' => config_path('server-push.php'),
+            __DIR__.'/../config/server-push.php' => config_path('server-push.php'),
         ], 'config');
     }
 
@@ -39,7 +39,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected function registerDefaultLinks()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/server-push.php', 'server-push');
+        $this->mergeConfigFrom(__DIR__.'/../config/server-push.php', 'server-push');
         $instance = app('server-push');
 
         foreach (config('server-push.default_links', []) as $type => $paths) {
@@ -52,15 +52,15 @@ class ServiceProvider extends BaseServiceProvider
 
     protected function registerElixirLinks()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/server-push.php', 'server-push');
+        $this->mergeConfigFrom(__DIR__.'/../config/server-push.php', 'server-push');
         $instance = app('server-push');
 
         if (config('server-push.autolink_elixir')) {
-            $revPath = public_path() . '/build/rev-manifest.json';
+            $revPath = public_path().'/build/rev-manifest.json';
             if (file_exists($revPath)) {
                 $revMap = json_decode($revPath, true);
                 foreach (array_values($revMap) as $path) {
-                    $instance->queueResource('/' . ltrim($path, '/'));
+                    $instance->queueResource('/'.ltrim($path, '/'));
                 }
             }
         }
