@@ -59,8 +59,10 @@ class ServiceProvider extends BaseServiceProvider
             $revPath = public_path().'/build/rev-manifest.json';
             if (file_exists($revPath)) {
                 $revMap = json_decode($revPath, true);
-                foreach (array_values($revMap) as $path) {
-                    $instance->queueResource('/'.ltrim($path, '/'));
+                if ($revMap) {
+                    foreach (array_values($revMap) as $path) {
+                        $instance->queueResource('/'.ltrim($path, '/'));
+                    }
                 }
             }
         }
