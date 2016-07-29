@@ -39,10 +39,11 @@ class Http2ServerPushMiddleware
 
     /**
      * @param Request $request
+     *
      * @return bool
      */
     protected function shouldUseServerPush(Request $request) : bool
     {
-        return (! $request->ajax());
+        return !$request->ajax();
     }
 }
