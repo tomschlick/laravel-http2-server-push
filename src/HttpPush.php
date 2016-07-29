@@ -18,8 +18,12 @@ class HttpPush
      * @param string $resourcePath
      * @param string $type
      */
-    public function queueResource(string $resourcePath, string $type)
+    public function queueResource(string $resourcePath, string $type = null)
     {
+        if (!$type) {
+            $type = static::getTypeByExtension($resourcePath);
+        }
+
         $this->resources[] = [
             'path' => $resourcePath,
             'type' => $type,
@@ -36,7 +40,7 @@ class HttpPush
         $links = [];
 
         foreach ($this->resources as $row) {
-            $links[] = '<'.$row['path'].'>; rel=preload; as='.$row['type'];
+            $links[] = '<' . $row['path'] . '>; rel=preload; as=' . $row['type'];
         }
 
         return $links;
@@ -56,5 +60,28 @@ class HttpPush
     public function clear()
     {
         $this->resources = [];
+    }
+
+    /**
+     * @param string $resourcePath
+     * @return string
+     */
+    public static function getTypeByExtension(string $resourcePath) : string
+    {
+        $parts = explode('.', $resourcePath);
+        $extension = end($parts);
+        switch ($extension) {
+            case 'css':
+                return 'style';
+                break;
+
+            case 'js':
+                return 'script';
+                break;
+
+            default:
+                return 'image';
+                break;
+        }
     }
 }

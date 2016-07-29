@@ -6,15 +6,17 @@ return [
     'default_links' => [
         'styles' => [
 
-            ],
+        ],
 
         'scripts' => [
 
-            ],
+        ],
 
         'images' => [
 
-            ],
+        ],
     ],
 
+    // Auto link all files that are built with elixir
+    'autolink_elixir' => true,
 ];

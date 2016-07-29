@@ -54,4 +54,14 @@ class HttpPushTest extends PHPUnit_Framework_TestCase
         $this->instance->clear();
         $this->assertTrue(empty($this->instance->resources));
     }
+
+    public function test_get_type_by_extension()
+    {
+        $this->assertEquals('script', (HttpPush::getTypeByExtension('/build/app.js')));
+        $this->assertEquals('script', (HttpPush::getTypeByExtension('app.min.js')));
+
+        $this->assertEquals('style', (HttpPush::getTypeByExtension('/assets/main.css')));
+        $this->assertEquals('image', (HttpPush::getTypeByExtension('/assets/logo.png')));
+        $this->assertEquals('image', (HttpPush::getTypeByExtension('/assets/header.gif')));
+    }
 }
