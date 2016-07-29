@@ -40,7 +40,7 @@ class HttpPush
         $links = [];
 
         foreach ($this->resources as $row) {
-            $links[] = '<' . $row['path'] . '>; rel=preload; as=' . $row['type'];
+            $links[] = '<'.$row['path'].'>; rel=preload; as='.$row['type'];
         }
 
         return $links;
@@ -64,6 +64,7 @@ class HttpPush
 
     /**
      * @param string $resourcePath
+     *
      * @return string
      */
     public static function getTypeByExtension(string $resourcePath) : string
