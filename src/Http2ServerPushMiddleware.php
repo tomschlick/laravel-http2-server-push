@@ -22,7 +22,7 @@ class Http2ServerPushMiddleware
     {
         $this->response = $next($request);
 
-        if ($this->shouldUseServerPush()) {
+        if ($this->shouldUseServerPush($request)) {
             $this->addServerPushHeaders();
         }
 
@@ -38,10 +38,11 @@ class Http2ServerPushMiddleware
     }
 
     /**
+     * @param Request $request
      * @return bool
      */
-    protected function shouldUseServerPush() : bool
+    protected function shouldUseServerPush(Request $request) : bool
     {
-        return true;
+        return (! $request->ajax());
     }
 }
