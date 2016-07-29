@@ -10,6 +10,16 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 class ServiceProvider extends BaseServiceProvider
 {
     /**
+     * Bootstrap the application services.
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__ . '/../config/server-push.php' => config_path('server-push.php'),
+        ], 'config');
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void
