@@ -30,4 +30,22 @@ class ServiceProvider extends BaseServiceProvider
             return $this->app->make(HttpPush::class);
         });
     }
+
+    /**
+     * Load the default links from the config.
+     */
+    protected function registerDefaultLinks()
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../config/server-push.php', 'server-push');
+
+        $instance = app('server-push');
+
+        foreach (config('server-push.default_links', []) as $type => $paths) {
+            $type = rtrim($type, 's');
+            foreach ($paths as $path) {
+                $instance->queueResource($path, $type);
+            }
+        }
+    }
+
 }
