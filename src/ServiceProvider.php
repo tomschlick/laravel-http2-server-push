@@ -29,6 +29,8 @@ class ServiceProvider extends BaseServiceProvider
         $this->app->singleton('server-push', function () {
             return $this->app->make(HttpPush::class);
         });
+
+        $this->registerDefaultLinks();
     }
 
     /**
