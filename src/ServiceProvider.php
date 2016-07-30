@@ -58,10 +58,10 @@ class ServiceProvider extends BaseServiceProvider
         if (config('server-push.autolink_elixir')) {
             $revPath = public_path().'/build/rev-manifest.json';
             if (file_exists($revPath)) {
-                $revMap = json_decode($revPath, true);
+                $revMap = json_decode(file_get_contents($revPath), true);
                 if ($revMap) {
                     foreach (array_values($revMap) as $path) {
-                        $instance->queueResource('/'.ltrim($path, '/'));
+                        $instance->queueResource('/build/'.ltrim($path, '/'));
                     }
                 }
             }
