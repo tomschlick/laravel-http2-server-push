@@ -26,7 +26,7 @@ Next add the service provider to your `config/app.php` file:
 Then add the middleware to your Http Kernel (`app/Http/Kernel.php`). Do so towards the end of the list.
 ```php
 protected $middleware = [
-    \Tomschlick\ServerPush\Http2ServerPushMiddleware::class,
+    \TomSchlick\ServerPush\Http2ServerPushMiddleware::class,
 ];
 ```
 
