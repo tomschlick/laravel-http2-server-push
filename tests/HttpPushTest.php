@@ -39,6 +39,19 @@ class HttpPushTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $this->instance->resources);
     }
 
+    public function test_add_external_resources_to_queue()
+    {
+        $this->instance->queueResource('https://example.com/style.css', 'style');
+
+        $expected = [
+            [
+                'path' => 'https://example.com/style.css',
+                'type' => 'style',
+            ],
+        ];
+        $this->assertEquals($expected, $this->instance->resources);
+    }
+
     public function test_resource_generates_link_string()
     {
         $this->instance->queueResource('/assets/app.js.min', 'script');
