@@ -33,7 +33,7 @@ class Http2ServerPushMiddleware
     {
         if (app('server-push')->hasLinks()) {
             $link = implode(',', app('server-push')->generateLinks());
-            $this->response->headers->set('Link', $link, true);
+            $this->response->headers->set('Link', $link);
         }
     }
 
