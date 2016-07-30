@@ -50,6 +50,9 @@ class ServiceProvider extends BaseServiceProvider
         }
     }
 
+    /**
+     * Parse and load links from an existing elixir revision manifest file.
+     */
     protected function registerElixirLinks()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/server-push.php', 'server-push');
