@@ -9,3 +9,28 @@
 
 
 A middleware package for Laravel 5 to enable server push for your script, style, and image assets.
+
+## Installation
+
+First start by adding the package to your composer.json file
+```bash
+composer require tomschlick/laravel-http2-server-push
+```
+
+Next add the service provider to your `config/app.php` file:
+```
+\TomSchlick\ServerPush\ServiceProvider::class,
+```
+
+
+Then add the middleware to your Http Kernel (`app/Http/Kernel.php`). Do so towards the end of the list.
+```php
+protected $middleware = [
+    \Tomschlick\ServerPush\Http2ServerPushMiddleware::class,
+];
+```
+
+## Usage
+
+Now when you enable it on a route it will automatically include the resources in your elixir `/build/rev-manifest.json` file. 
+To add a resource manually you may use `pushStyle($pathOfCssFile)`, `pushScript($pathOfJsFile)`, or `pushImage($pathOfImageFile)` from anywhere in your project.
