@@ -3,8 +3,8 @@
 namespace TomSchlick\ServerPush;
 
 use Illuminate\Foundation\Application as LaravelApplication;
-use Laravel\Lumen\Application as LumenApplication;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use Laravel\Lumen\Application as LumenApplication;
 
 /**
  * Class ServiceProvider.
