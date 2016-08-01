@@ -2,6 +2,8 @@
 
 namespace TomSchlick\ServerPush;
 
+use Illuminate\Foundation\Application as LaravelApplication;
+use Laravel\Lumen\Application as LumenApplication;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 /**
@@ -14,9 +16,23 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__.'/../config/server-push.php' => config_path('server-push.php'),
-        ], 'config');
+        $this->setupConfig();
+    }
+
+    /**
+     * Setup the config.
+     *
+     * @return void
+     */
+    protected function setupConfig()
+    {
+        $source = realpath(__DIR__.'/../config/server-push.php');
+        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
+            $this->publishes([$source => config_path('server-push.php')]);
+        } elseif ($this->app instanceof LumenApplication) {
+            $this->app->configure('server-push');
+        }
+        $this->mergeConfigFrom($source, 'server-push');
     }
 
     /**
@@ -27,8 +43,10 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->app->singleton('server-push', function () {
-            return $this->app->make(HttpPush::class);
+            return new HttpPush();
         });
+
+        $this->app->alias('server-push', HttpPush::class);
 
         $this->registerDefaultLinks();
         $this->registerElixirLinks();
@@ -36,10 +54,11 @@ class ServiceProvider extends BaseServiceProvider
 
     /**
      * Load the default links from the config.
+     *
+     * @return void
      */
     protected function registerDefaultLinks()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/server-push.php', 'server-push');
         $instance = app('server-push');
 
         foreach (config('server-push.default_links', []) as $type => $paths) {
@@ -52,10 +71,11 @@ class ServiceProvider extends BaseServiceProvider
 
     /**
      * Parse and load links from an existing elixir revision manifest file.
+     *
+     * @return void
      */
     protected function registerElixirLinks()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/server-push.php', 'server-push');
         $instance = app('server-push');
 
         if (config('server-push.autolink_elixir')) {
@@ -69,5 +89,15 @@ class ServiceProvider extends BaseServiceProvider
                 }
             }
         }
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return string[]
+     */
+    public function provides()
+    {
+        return ['server-push'];
     }
 }
