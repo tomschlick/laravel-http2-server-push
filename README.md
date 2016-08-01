@@ -1,4 +1,4 @@
-# Laravel HTTP/2 Server Push Middleware
+# Laravel / Lumen HTTP/2 Server Push Middleware
 
 [![Build Status](https://secure.travis-ci.org/tomschlick/laravel-http2-server-push.png)](http://travis-ci.org/tomschlick/laravel-http2-server-push)
 [![StyleCI](https://styleci.io/repos/64423074/shield)](https://styleci.io/repos/64423074)
@@ -8,7 +8,7 @@
 [![License](https://poser.pugx.org/tomschlick/laravel-http2-server-push/license)](https://packagist.org/packages/tomschlick/laravel-http2-server-push)
 
 
-A middleware package for Laravel 5 to enable server push for your script, style, and image assets.
+A middleware package for Laravel 5 / Lumen to enable server push for your script, style, and image assets.
 
 ## Installation
 
