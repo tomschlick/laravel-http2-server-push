@@ -2,7 +2,6 @@
 
 namespace TomSchlick\ServerPush;
 
-use Illuminate\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Laravel\Lumen\Application as LumenApplication;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
@@ -55,6 +54,8 @@ class ServiceProvider extends BaseServiceProvider
 
     /**
      * Load the default links from the config.
+     *
+     * @return void
      */
     protected function registerDefaultLinks()
     {
@@ -70,6 +71,8 @@ class ServiceProvider extends BaseServiceProvider
 
     /**
      * Parse and load links from an existing elixir revision manifest file.
+     *
+     * @return void
      */
     protected function registerElixirLinks()
     {
