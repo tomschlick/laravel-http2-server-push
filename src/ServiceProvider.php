@@ -26,7 +26,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected function setupConfig()
     {
-        $source = realpath(__DIR__.'/../config/server-push.php');
+        $source = realpath(__DIR__ . '/../config/server-push.php');
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([$source => config_path('server-push.php')]);
         } elseif ($this->app instanceof LumenApplication) {
@@ -78,13 +78,15 @@ class ServiceProvider extends BaseServiceProvider
     {
         $instance = app('server-push');
 
-        if (config('server-push.autolink_elixir')) {
-            $revPath = public_path().'/build/rev-manifest.json';
+        if (config('server-push.autolink_from_manifest')) {
+            $revPath = config('server-push.manifest_path');
+            $assetsBaseUri = config('server-push.assets_base_uri');
             if (file_exists($revPath)) {
                 $revMap = json_decode(file_get_contents($revPath), true);
                 if ($revMap) {
                     foreach (array_values($revMap) as $path) {
-                        $instance->queueResource('/build/'.ltrim($path, '/'));
+                        $assetUri = rtrim($assetsBaseUri, '/') . '/' . ltrim($path, '/');
+                        $instance->queueResource($assetUri);
                     }
                 }
             }
