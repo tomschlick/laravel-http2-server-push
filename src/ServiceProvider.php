@@ -26,7 +26,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected function setupConfig()
     {
-        $source = realpath(__DIR__ . '/../config/server-push.php');
+        $source = realpath(__DIR__.'/../config/server-push.php');
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([$source => config_path('server-push.php')]);
         } elseif ($this->app instanceof LumenApplication) {
@@ -85,7 +85,7 @@ class ServiceProvider extends BaseServiceProvider
                 $revMap = json_decode(file_get_contents($revPath), true);
                 if ($revMap) {
                     foreach (array_values($revMap) as $path) {
-                        $assetUri = rtrim($assetsBaseUri, '/') . '/' . ltrim($path, '/');
+                        $assetUri = rtrim($assetsBaseUri, '/').'/'.ltrim($path, '/');
                         $instance->queueResource($assetUri);
                     }
                 }
