@@ -17,6 +17,14 @@ return [
         ],
     ],
 
-    // Auto link all files that are built with elixir
-    'autolink_elixir' => true,
+    // Auto link all files from your built manifest
+    'autolink_from_manifest' => true,
+
+    // Elixir example
+    'manifest_path'   => public_path('build/rev-manifest.json'),
+    'assets_base_uri' => '/build/',
+
+    // Mix example
+    //'manifest_path'   => public_path('mix-manifest.json'),
+    //'assets_base_uri' => '/',
 ];
