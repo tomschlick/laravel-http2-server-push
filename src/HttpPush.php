@@ -72,17 +72,9 @@ class HttpPush
         $parts = explode('.', $resourcePath);
         $extension = end($parts);
         switch ($extension) {
-            case 'css':
-                return 'style';
-                break;
-
-            case 'js':
-                return 'script';
-                break;
-
-            default:
-                return 'image';
-                break;
+            case 'css': return 'style';
+            case 'js': return 'script';
+            default: return 'image';
         }
     }
 }
