@@ -31,5 +31,12 @@
     "psr-4": {
       "TomSchlick\\ServerPush\\Tests\\": "tests/"
     }
+  },
+  "extra" : {
+    "laravel" : {
+      "providers" : [
+        "TomSchlick\\ServerPush\\ServiceProvider"
+      ]
+    }
   }
 }
