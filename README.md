@@ -33,4 +33,4 @@ protected $middleware = [
 ## Usage
 
 Now when you enable it on a route it will automatically include the resources in your elixir `/build/rev-manifest.json` file. 
-To add a resource manually you may use `pushStyle($pathOfCssFile)`, `pushScript($pathOfJsFile)`, or `pushImage($pathOfImageFile)` from anywhere in your project.
+To add a resource manually you may use `pushStyle($pathOfCssFile)`, `pushScript($pathOfJsFile)`, `pushFont($pathOfImageFile)` or `pushImage($pathOfImageFile)` from anywhere in your project.

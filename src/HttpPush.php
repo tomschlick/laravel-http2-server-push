@@ -74,6 +74,10 @@ class HttpPush
         switch ($extension) {
             case 'css': return 'style';
             case 'js': return 'script';
+            case 'ttf': return 'font';
+            case 'otf': return 'font';
+            case 'woff': return 'font';
+            case 'woff2': return 'font';
             default: return 'image';
         }
     }
