@@ -15,6 +15,10 @@ return [
         'images' => [
 
         ],
+
+        'fonts' => [
+
+        ],
     ],
 
     // Auto link all files from your built manifest

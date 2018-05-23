@@ -29,3 +29,13 @@ if (!function_exists('pushStyle')) {
         return app('server-push')->queueResource($resourcePath, 'style');
     }
 }
+
+if (!function_exists('pushFont')) {
+    /**
+     * @param string $resourcePath
+     */
+    function pushFont(string $resourcePath)
+    {
+        return app('server-push')->queueResource($resourcePath, 'font');
+    }
+}
