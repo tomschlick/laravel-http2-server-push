@@ -18,7 +18,7 @@ return [
 
         'fonts' => [
 
-        ]
+        ],
     ],
 
     // Auto link all files from your built manifest
