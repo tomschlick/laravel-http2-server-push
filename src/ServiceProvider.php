@@ -59,14 +59,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected function registerDefaultLinks()
     {
-        $instance = app('server-push');
-
-        foreach (config('server-push.default_links', []) as $type => $paths) {
-            $type = rtrim($type, 's');
-            foreach ($paths as $path) {
-                $instance->queueResource($path, $type);
-            }
-        }
+        app('server-push')->massAssign(config('server-push.default_links', []));
     }
 
     /**

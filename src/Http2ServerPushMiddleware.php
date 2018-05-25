@@ -13,16 +13,19 @@ class Http2ServerPushMiddleware
     protected $response;
 
     /**
-     * @param Request $request
-     * @param Closure $next
+     * @param Request     $request
+     * @param Closure     $next
+     * @param null|string $group
      *
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, string $group = null)
     {
         $this->response = $next($request);
 
         if ($this->shouldUseServerPush($request)) {
+            app('server-push')->massAssign(config('server-push.groups.'.$group, []));
+
             $this->addServerPushHeaders();
         }
 
@@ -34,6 +37,8 @@ class Http2ServerPushMiddleware
         if (app('server-push')->hasLinks()) {
             $link = implode(',', app('server-push')->generateLinks());
             $this->response->headers->set('Link', $link, false);
+
+            app('server-push')->clear();
         }
     }
 
