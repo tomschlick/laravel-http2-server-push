@@ -7,17 +7,21 @@
     {
       "name": "Tom Schlick",
       "email": "tom@tomschlick.com"
+    },
+    {
+      "name": "Michael Rödel",
+      "email": "hello@mroedel.de"
     }
   ],
   "require": {
-    "php": ">=7.0",
-    "illuminate/contracts": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*",
-    "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*",
-    "illuminate/http": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*"
+    "php": "^7.1.3",
+    "illuminate/contracts": "^5.6",
+    "illuminate/support": "^5.6",
+    "illuminate/http": "^5.6"
   },
   "require-dev": {
-    "phpunit/phpunit": "^5.4",
-    "graham-campbell/testbench": "^3.1"
+    "phpunit/phpunit": "^7.0",
+    "graham-campbell/testbench": "^5.0"
   },
   "autoload": {
     "psr-4": {

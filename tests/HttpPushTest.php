@@ -2,13 +2,13 @@
 
 namespace TomSchlick\ServerPush\Tests;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use TomSchlick\ServerPush\HttpPush;
 
 /**
  * Class HttpPushTest.
  */
-class HttpPushTest extends PHPUnit_Framework_TestCase
+class HttpPushTest extends TestCase
 {
     /**
      * @var HttpPush
