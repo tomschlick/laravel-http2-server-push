@@ -69,7 +69,7 @@ class HttpPush
      */
     public static function getTypeByExtension(string $resourcePath) : string
     {
-        $parts = explode('.', $resourcePath);
+        $parts = explode('.', explode('?', $resourcePath)[0]);
         $extension = end($parts);
         switch ($extension) {
             case 'css': return 'style';
