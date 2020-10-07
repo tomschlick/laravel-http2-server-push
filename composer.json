@@ -1,6 +1,6 @@
 {
   "name": "tomschlick/laravel-http2-server-push",
-  "description": "A middleware package for Laravel 5 to enable server push for your script, style, and image assets.",
+  "description": "A middleware package for Laravel to enable server push for your script, style, and image assets.",
   "type": "library",
   "license": "MIT",
   "authors": [
@@ -11,9 +11,9 @@
   ],
   "require": {
     "php": ">=7.2",
-    "illuminate/contracts": "^5.1. | ^6.0 | ^7.0",
-    "illuminate/support": "^5.1 | ^6.0 | ^7.0",
-    "illuminate/http": "5.1 | ^6.0 | ^7.0"
+    "illuminate/contracts": "^5.1. | ^6.0 | ^7.0 | ^8.0",
+    "illuminate/support": "^5.1 | ^6.0 | ^7.0 | ^8.0",
+    "illuminate/http": "5.1 | ^6.0 | ^7.0 | ^8.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.4",
