@@ -40,7 +40,7 @@ class HttpPush
         $links = [];
 
         foreach ($this->resources as $row) {
-            $links[] = '<'.$row['path'].'>; rel=preload; as='.$row['type'];
+            $links[] = '<'.$row['path'].'>; rel=preload; as='.$row['type'].($row['type']==='font'?'; crossorigin':'');
         }
 
         return $links;
