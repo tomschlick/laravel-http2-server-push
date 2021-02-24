@@ -89,7 +89,7 @@ class HttpPushTest extends PHPUnit_Framework_TestCase
     {
         $this->instance->queueResource('/assets/font/Roboto.woff', 'font');
 
-        $this->assertEquals('</assets/font/Roboto.woff>; rel=preload; as=font', $this->instance->generateLinks()[0]);
+        $this->assertEquals('</assets/font/Roboto.woff>; rel=preload; as=font; crossorigin', $this->instance->generateLinks()[0]);
     }
 
     public function test_clear_resources()
