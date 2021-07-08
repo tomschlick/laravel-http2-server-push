@@ -13,10 +13,21 @@ class HttpPush
     public $resources = [];
 
     /**
+     * @param array       $paths
+     * @param string|null $type
+     */
+    public function queueResources(array $paths = [], string $type = null)
+    {
+        foreach ($paths as $path) {
+            $this->queueResource($path, $type);
+        }
+    }
+
+    /**
      * Push a resource onto the queue for the middleware.
      *
-     * @param string $resourcePath
-     * @param string $type
+     * @param string      $resourcePath
+     * @param null|string $type
      */
     public function queueResource(string $resourcePath, string $type = null)
     {
@@ -79,6 +90,17 @@ class HttpPush
             case 'woff': return 'font';
             case 'woff2': return 'font';
             default: return 'image';
+        }
+    }
+
+    /**
+     * @param array $data
+     */
+    public function massAssign(array $data = [])
+    {
+        foreach ($data as $type => $paths) {
+            $type = rtrim($type, 's');
+            $this->queueResources($paths, $type);
         }
     }
 }

@@ -28,9 +28,17 @@ Then add the middleware to your Http Kernel (`app/Http/Kernel.php`). Do so towar
 protected $middleware = [
     \TomSchlick\ServerPush\Http2ServerPushMiddleware::class,
 ];
+protected $routeMiddleware = [
+    'http2'             => \TomSchlick\ServerPush\Http2ServerPushMiddleware::class,
+];
 ```
 
 ## Usage
-
 Now when you enable it on a route it will automatically include the resources in your elixir `/build/rev-manifest.json` file. 
 To add a resource manually you may use `pushStyle($pathOfCssFile)`, `pushScript($pathOfJsFile)`, `pushFont($pathOfFontFile)` or `pushImage($pathOfImageFile)` from anywhere in your project.
+
+```
+Route::group(['middleware' => ['http2:frontend']], function () {
+    //...
+});
+```

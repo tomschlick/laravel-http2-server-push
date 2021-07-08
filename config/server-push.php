@@ -1,23 +1,25 @@
 <?php
 
 return [
-
     // Include assets you want to link on every page load here.
     'default_links' => [
-        'styles' => [
-
+        'styles'  => [],
+        'scripts' => [],
+        'images'  => [],
+        'fonts'   => [],
+    ],
+    'groups' => [
+        'backed' => [
+            'styles'  => [],
+            'scripts' => [],
+            'images'  => [],
+            'fonts'   => [],
         ],
-
-        'scripts' => [
-
-        ],
-
-        'images' => [
-
-        ],
-
-        'fonts' => [
-
+        'frontend' => [
+            'styles'  => [],
+            'scripts' => [],
+            'images'  => [],
+            'fonts'   => [],
         ],
     ],
 
